@@ -8,14 +8,27 @@
     </head>
     <body>
         <div class="head">Etch-A-Sketch</div>
+
         <div class="center">
+
             <div class="options">
-                <input type="color">
-                <input type="checkbox" name="rgb-mode">
-                <label for="rgb-mode">RGB mode</label><br>
-                <button type="button">Clear</button>
+                <input type="color"><br>
+                <div class="checkbox">
+                    <input type="checkbox" name="rgb-mode"><br>
+                    <label for="rgb-mode">RGB mode</label>
+                </div>
+                <div class="slider">
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="64" value="16" class="slider" id="myRange">
+                    </div>
+                    <div class="sliderOutput"></div>
+                </div>
+                <button type="button" class="resize">Resize</button>
+                <button type="button" class="clear">Clear</button>
             </div>
+
             <div class="grid"></div>
+
         </div>
         <div class="foot">Matt Cave &copy;2022</div>
     </body>
