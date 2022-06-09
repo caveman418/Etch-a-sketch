@@ -55,3 +55,7 @@ body {
     border: solid gray 0.01px;
     flex: auto;
 }
+
+.activated {
+    background-color: black;
+}
