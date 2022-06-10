@@ -1,5 +1,6 @@
 let isPainting = false;
 let isRgb = false;
+let isEraser = false;
 
 const slider = document.getElementById('myRange');
 const output = document.querySelector('.sliderOutput');
@@ -7,6 +8,7 @@ const grid = document.querySelector('.grid');
 const resizeButton = document.querySelector('.resize');
 const clearButton = document.querySelector('.clear');
 const rgbSwitch = document.querySelector('.checkrgb');
+const eraserButton = document.querySelector('.eraser');
 
 output.textContent = `${slider.value} x ${slider.value}`; //initialize grid size number underneath slider (16)
 
@@ -14,7 +16,17 @@ slider.addEventListener('input', () => {
     output.textContent = `${slider.value} x ${slider.value}`; //when slider is moved, number underneath is updated
 });
 
-function resize(e) {
+function draw(e) { //prioritizes eraser mode over rgb mode if both are activated
+    if (isEraser) {
+        e.target.style.backgroundColor = 'rgb(245,245,245)';
+    } else if (isRgb) {
+        e.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    } else {
+        e.target.style.backgroundColor = document.querySelector('.colorpicker').value;
+    }
+};
+
+function resize(e) { //clears grid and adds new divs with event listeners attached to each
     grid.textContent = ''; //clear grid
 
     for (let i = 1; i <= slider.value**2; i++) {
@@ -25,24 +37,16 @@ function resize(e) {
 
         div.addEventListener('mousedown', (e) => { //add these following event listeners to each div as they're created
             isPainting = true;
-            if (isRgb) {
-                e.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-            } else {
-                e.target.style.backgroundColor = document.querySelector('.colorpicker').value;
-            }
+            draw(e);
         });
         div.addEventListener('mouseup', (e) => {
             isPainting = false;
         })
         div.addEventListener('mouseenter', (e) => {
             if (isPainting) {
-                if (isRgb) {
-                    e.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-                } else {
-                    e.target.style.backgroundColor = document.querySelector('.colorpicker').value;
-                }
-            };
-        })
+                draw(e);
+            }
+        });
         
         grid.appendChild(div); //put the div with all those settings into the canvas
     }
@@ -55,3 +59,5 @@ resizeButton.addEventListener('click', resize); //run resize function above when
 clearButton.addEventListener('click', resize); //the clear button does the exact same as the resize button
 
 rgbSwitch.addEventListener('click', (e) => {isRgb = !isRgb}); //toggles rgb mode
+
+eraserButton.addEventListener('click', (e) => {isEraser = !isEraser}); //toggles rgb mode
