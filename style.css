@@ -52,12 +52,12 @@ body {
 }
 
 button {
-    width: 10em;
-    height: 4em;
+    width: 160px;
+    height: 60px;
     margin-top: 1em;
     background-color: transparent;
     border-radius: 1em;
-    font-size: 100%;
+    font-size: 19px;
 }
 
 button:hover {
@@ -82,4 +82,8 @@ button:hover {
 .activated {
     background-color: rgb(70, 70, 70);
     color: rgb(220, 220, 220);
+}
+
+.sliderOutput {
+    font-size: 19px;
 }
