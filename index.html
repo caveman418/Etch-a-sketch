@@ -14,16 +14,16 @@
             <div class="options">
                 <input class="colorpicker" type="color"><br>
 
-                <div class="checkbox">
-                    <input class = "checkrgb" type="checkbox" name="rgb-mode">
-                    <label for="rgb-mode">RGB mode</label>
-                </div>
+                <button type="button" data-var="isDraw" class="drawmode button activated">Draw</button>
 
-                <div class="eraserbox">
-                    <input class = "eraser" type="checkbox" name="eraser-mode">
-                    <label for="eraser-mode">Eraser</label>
-                </div>
+                <button type="button" data-var="isRgb" class="checkrgb button">RGB Mode</button>
 
+                <button type="button" data-var="isEraser" class="eraser button">Eraser</button>
+            </div>
+
+            <div class="grid"></div>
+
+            <div class="sizeoptions">
                 <div class="slider">
                     <div class="slidecontainer">
                         <input type="range" min="1" max="64" value="16" class="slider" id="myRange">
@@ -34,10 +34,7 @@
                 <button type="button" class="resize">Resize</button>
 
                 <button type="button" class="clear">Clear</button>
-                
             </div>
-
-            <div class="grid"></div>
 
         </div>
         <div class="foot">Matt Cave &copy;2022</div>
